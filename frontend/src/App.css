@@ -1,38 +1,102 @@
+/* Grund-Reset für HTML & Body */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* App-Container: zentriert alles auf der Seite */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column;      /* alles untereinander */
+  justify-content: center;     /* vertikal zentriert */
+  align-items: center;         /* horizontal zentriert */
+  height: 100vh;
+  text-align: center;
+  gap: 20px;                   /* Abstand zwischen Elementen */
+}
+
+/* Überschrift */
+h1 {
+  font-size: 4rem;
+  color: #333;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.25rem;           /* angenehme, moderne Größe */
+  font-weight: 500;             
+  max-width: 800px;             /* nicht zu breit, gut lesbar */
+  margin: 0 auto 20px;          /* zentriert + Abstand nach unten */
+  line-height: 1.6;             /* schöner Zeilenabstand */
+  color: #333;                  /* angenehmes, weiches Schwarz */
+  text-align: center;
+  padding: 0 20px;              /* etwas Luft am Rand für mobile */
+}
+
+/* Beschreibungstext */
+p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Upload-Box gestylt wie ein Button */
+.Upload-Box {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  width: 250px;
+  height: 80px;
+  border: 2px dashed #aaa;
+  border-radius: 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+/* Hover-Effekt */
+.Upload-Box:hover {
+  border-color: #333;
+  background-color: #f0f0f0;
+  color: #000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* input verstecken */
+.Upload-Box input {
+  display: none;
 }
+
+/* der sichtbare Upload-Text */
+.Upload-Box span {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #444;
+}
+
+.Generieren-Button {
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.generate-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.generate-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+

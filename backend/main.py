@@ -1,12 +1,13 @@
 from fastapi import FastAPI, UploadFile, File
 import pdfminer.high_level
+from io import BytesIO
 
 app = FastAPI()
 
 @app.post("/upload/")
 async def upload_resume(file: UploadFile = File(...)):
     content = await file.read()
-    text = pdfminer.high_level.extract_text_from_io(content)
+    text = pdfminer.high_level.extract_text(BytesIO(content))
     return {"text": text}
 
 # Starte den Server

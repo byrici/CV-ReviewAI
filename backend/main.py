@@ -1,13 +1,26 @@
 from fastapi import FastAPI, UploadFile, File
-import pdfminer.high_level
+from resume_processor import extract_resume_text
+from job_parser import extract_job_text
+from optimizer import optimize_resume
 
 app = FastAPI()
 
-@app.post("/upload/")
-async def upload_resume(file: UploadFile = File(...)):
-    content = await file.read()
-    text = pdfminer.high_level.extract_text_from_io(content)
-    return {"text": text}
+@app.post("/analyze/")
+async def analyze(
+    resume: UploadFile = File(...),
+    job_description: UploadFile = File(...)
+):
+    resume_bytes = await resume.read()
+    job_bytes = await job_description.read()
+
+    resume_text = extract_resume_text(resume_bytes)
+    job_text = extract_job_text(job_bytes)
+
+    optimized_resume = optimize_resume(resume_text, job_text)
+
+    return {
+        "optimized_resume": optimized_resume
+    }
 
 # Starte den Server
 if __name__ == "__main__":

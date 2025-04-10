@@ -16,7 +16,6 @@ function App() {
         <span>Datei auswählen</span>
       </label>
 
-
       <p className="Text-Stellenbeschreibung-Hochladen">
         Laden Sie jetzt die Stellenbeschreibung hoch
       </p>

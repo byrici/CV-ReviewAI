@@ -9,4 +9,4 @@ Ablauf:
 
 Der Nutzer lädt seinen Lebenslauf oder sein Anschreiben als PDF hoch und bekommt einen überarbeiteten Vorschlag ausgegeben, welchen er danach selber beliebig anpassen kann, ehe er als PDF heruntergeladen werden kann.
 
-Alex is da
+Alex is da hallo

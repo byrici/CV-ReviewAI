@@ -17,6 +17,7 @@ function App() {
         >
           Learn React
         </a>
+        <p>Ricardo ist ein Spast</p>
       </header>
     </div>
   );

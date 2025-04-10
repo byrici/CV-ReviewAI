@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>Ricardo ist ein Spast</p>
-      </header>
+      <h1>Review AI</h1>
+      <h3>Unsere App analysiert deinen Lebenslauf und gleicht ihn mit der
+          gewünschten Stellenanzeige ab. In wenigen Klicks erhältst du eine
+          optimierte Version deines Lebenslaufs. Gezielt, professionell und
+          individuell auf die Anforderungen des Jobs abgestimmt.
+      </h3>
+      <p>Laden Sie Ihren Lebenslauf hoch</p>
+
+      <label className="Upload-Box">
+        <input type="file" accept="image/*" />
+        <span>Datei auswählen</span>
+      </label>
+
+      <p className="Text-Stellenbeschreibung-Hochladen">
+        Laden Sie jetzt die Stellenbeschreibung hoch
+      </p>
+      <label className="Upload-Box">
+        <input type="file" accept="image/*" />
+        <span>Datei auswählen</span>
+      </label>
+
+      <button className="Generieren-Button">Jetzt verbessern!</button>
     </div>
   );
 }

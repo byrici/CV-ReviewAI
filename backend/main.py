@@ -5,10 +5,12 @@ from io import BytesIO
 app = FastAPI()
 
 @app.post("/upload/")
-async def upload_resume(file: UploadFile = File(...)):
+async def pdf_to_text(file: UploadFile = File(...)):
     content = await file.read()
     text = pdfminer.high_level.extract_text(BytesIO(content))
     return {"text": text}
+
+
 
 # Starte den Server
 if __name__ == "__main__":

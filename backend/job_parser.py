@@ -1,3 +1,5 @@
+from io import BytesIO
+import pdfminer.high_level
 
-def extract_job_text(file_bytes: bytes) -> str:
-    return file_bytes.decode("utf-8")
+def extract_job_text(pdf_bytes: bytes) -> str:
+    return pdfminer.high_level.extract_text(BytesIO(pdf_bytes))

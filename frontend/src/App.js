@@ -12,7 +12,7 @@ function App() {
       <p>Laden Sie Ihren Lebenslauf hoch</p>
 
       <label className="Upload-Box">
-        <input type="file" accept="image/*" />
+        <input type="file" accept=".pdf" />
         <span>Datei auswählen</span>
       </label>
 
@@ -20,7 +20,7 @@ function App() {
         Laden Sie jetzt die Stellenbeschreibung hoch
       </p>
       <label className="Upload-Box">
-        <input type="file" accept="image/*" />
+        <input type="file" accept=".pdf" />
         <span>Datei auswählen</span>
       </label>
 

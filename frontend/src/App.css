@@ -10,11 +10,11 @@ html, body {
 .App {
   display: flex;
   flex-direction: column;      /* alles untereinander */
-  justify-content: center;     /* vertikal zentriert */
   align-items: center;         /* horizontal zentriert */
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
   gap: 20px;                   /* Abstand zwischen Elementen */
+  padding: 40px 20px;
 }
 
 /* Überschrift */
@@ -100,3 +100,13 @@ p {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 } 
 
+.Optimized-Output {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  max-width: 800px;
+  white-space: pre-wrap;
+  color: #333;
+  font-family: monospace;
+}

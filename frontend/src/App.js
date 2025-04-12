@@ -54,7 +54,7 @@ function App() {
         Laden Sie jetzt die Stellenbeschreibung hoch
       </p>
       <label className="Upload-Box">
-        <input type="file" accept=".pdf" onChange={handleJobChange} />
+        <input type="file" accept=".pdf, image/*" onChange={handleJobChange} />
         <span>{jobFile ? jobFile.name : "Datei auswählen"}</span>
       </label>
 

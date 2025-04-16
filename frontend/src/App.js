@@ -6,6 +6,8 @@ function App() {
   const [resumeFile, setResumeFile] = useState(null);
   const [jobFile, setJobFile] = useState(null);
   const [optimizedText, setOptimizedText] = useState("");
+  const [loading, setLoading] = useState(false);
+  
 
   const handleResumeChange = (e) => {
     setResumeFile(e.target.files[0]);
@@ -23,12 +25,16 @@ function App() {
     formData.append("job_description", jobFile);
 
     try {
+      setLoading(true);
       const response = await axios.post("http://localhost:8000/analyze/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setOptimizedText(response.data.optimized_resume);
     } catch (error) {
       console.error("Fehler beim Hochladen:", error);
+    }
+      finally {
+      setLoading(false);
     }
   };
 
@@ -73,6 +79,14 @@ function App() {
         <button className="Generieren-Button" onClick={handleSubmit}>
           Jetzt verbessern!
         </button>
+
+        {loading && (
+          <div className="ProgressBarWrapper">
+            <div className="ProgressBar">
+              <div className="ProgressBar-Fill" />
+            </div>
+          </div>
+        )}
 
         {optimizedText && (
           <div className="Optimized-Output">

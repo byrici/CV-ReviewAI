@@ -1,112 +1,251 @@
-/* Grund-Reset für HTML & Body */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+
 html, body {
   height: 100%;
   margin: 0;
-  font-family: sans-serif;
-  background-color: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  overflow-x: hidden;
 }
 
-/* App-Container: zentriert alles auf der Seite */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+  linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.25), transparent 70%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Container für alles */
+.PageWrapper {
+  margin: 30px 30px;
+  background-color: #31005f;
+  border-radius: 36px 36px 36px 36px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  padding: 0px 0px 60px;
+  overflow: hidden;
+
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-repeat: repeat;
+}
+
+/* Hauptinhalt */
 .App {
   display: flex;
-  flex-direction: column;      /* alles untereinander */
-  align-items: center;         /* horizontal zentriert */
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  gap: 20px;                   /* Abstand zwischen Elementen */
-  padding: 40px 20px;
+  gap: 20px;
+  padding: 120px 40px 60px;
+  color: white;
 }
 
-/* Überschrift */
+/* Navbar */
+.Navbar {
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 100px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 36px 36px 0 0;
+  box-sizing: border-box;
+}
+
+.Navbar-Left, .Navbar-Right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.Navbar-Left .Logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.Navbar a {
+  color: #e6ddff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.Navbar a:hover {
+  color: #ffffff;
+}
+
+.TryFree {
+  background: linear-gradient(135deg, #b96eff, #a855f7);
+  padding: 10px 20px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Login {
+  font-weight: 600;
+}
+
 h1 {
-  font-size: 4rem;
-  color: #333;
-  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 1000;
+  font-size: 90px;
+  line-height: 1.0;
+  background: linear-gradient(90deg, #ff7d1a, #ff4ecd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #ffffff;
 }
 
 h3 {
-  font-size: 1.25rem;           /* angenehme, moderne Größe */
-  font-weight: 500;             
-  max-width: 800px;             /* nicht zu breit, gut lesbar */
-  margin: 0 auto 20px;          /* zentriert + Abstand nach unten */
-  line-height: 1.6;             /* schöner Zeilenabstand */
-  color: #333;                  /* angenehmes, weiches Schwarz */
-  text-align: center;
-  padding: 0 20px;              /* etwas Luft am Rand für mobile */
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 800px;
+  margin: 10px auto 30px;
+  line-height: 1.6;
+  color: #e0d2f9;
+  padding: 0 20px;
 }
 
-/* Beschreibungstext */
 p {
   font-size: 1rem;
-  color: #555;
+  color: #d0bdfc;
   margin: 0;
 }
 
-/* Upload-Box gestylt wie ein Button */
+/* Upload-Stil */
 .Upload-Box {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
-  height: 80px;
-  border: 2px dashed #aaa;
+  width: 280px;
+  height: 70px;
+  border: 2px dashed #a078ff;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: #350074;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-/* Hover-Effekt */
 .Upload-Box:hover {
-  border-color: #333;
-  background-color: #f0f0f0;
-  color: #000;
+  border-color: #fff;
+  background-color: #4a00b8;
+  color: #fff;
 }
 
-/* input verstecken */
 .Upload-Box input {
   display: none;
 }
 
-/* der sichtbare Upload-Text */
 .Upload-Box span {
   display: block;
   font-weight: 500;
   font-size: 16px;
-  color: #444;
+  color: #e6ddff;
 }
 
+/* Button */
 .Generieren-Button {
   margin-top: 20px;
-  padding: 12px 28px;
+  padding: 14px 32px;
   font-size: 16px;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  background: linear-gradient(135deg, #9c40ff, #6415ff);
   border: none;
-  border-radius: 12px;
+  border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.generate-button:hover {
+.Generieren-Button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-.generate-button:active {
+.Generieren-Button:active {
   transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-} 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
+/* Optimierter Lebenslauf */
 .Optimized-Output {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f4f4f4;
-  border-radius: 12px;
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #1a0033;
+  border-radius: 16px;
   max-width: 800px;
   white-space: pre-wrap;
-  color: #333;
+  color: #eae7ff;
   font-family: monospace;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Headlines */
+.HeroHeadline {
+  font-family: 'Playfair Display', bold;
+  font-size: 65px;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+}
+
+.HeroSubline {
+  font-family: 'Playfair Display', bold;
+  font-size: 65px;
+  font-weight: 800;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+}
+
+/* Farbige Worte */
+.Colorful {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.orange {
+  color: #ff7d1a;
+}
+
+.yellow {
+  color: #ffcc00;
+}
+
+.teal {
+  color: #00e0d3;
+}
+
+.white {
+  color: white;
 }

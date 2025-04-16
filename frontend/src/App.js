@@ -1,11 +1,11 @@
 import './App.css';
-import { useState } from "react";
-import axios from "axios";
+import { useState } from 'react';
+import axios from 'axios';
 
 function App() {
   const [resumeFile, setResumeFile] = useState(null);
   const [jobFile, setJobFile] = useState(null);
-  const [optimizedText, setOptimizedText] = useState(""); // Rückmeldung vom Backend
+  const [optimizedText, setOptimizedText] = useState("");
 
   const handleResumeChange = (e) => {
     setResumeFile(e.target.files[0]);
@@ -24,50 +24,63 @@ function App() {
 
     try {
       const response = await axios.post("http://localhost:8000/analyze/", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log("Backend-Antwort:", response.data);
-      setOptimizedText(response.data.optimized_resume); // Ergebnis im UI anzeigen
+      setOptimizedText(response.data.optimized_resume);
     } catch (error) {
       console.error("Fehler beim Hochladen:", error);
     }
   };
 
   return (
-    <div className="App">
-      <h1>Review AI</h1>
-      <h3>Unsere App analysiert deinen Lebenslauf und gleicht ihn mit der
-          gewünschten Stellenanzeige ab. In wenigen Klicks erhältst du eine
-          optimierte Version deines Lebenslaufs. Gezielt, professionell und
-          individuell auf die Anforderungen des Jobs abgestimmt.
-      </h3>
-      <p>Laden Sie Ihren Lebenslauf hoch</p>
-
-      <label className="Upload-Box">
-        <input type="file" accept=".pdf" onChange={handleResumeChange} />
-        <span>{resumeFile ? resumeFile.name : "Datei auswählen"}</span>
-      </label>
-
-      <p className="Text-Stellenbeschreibung-Hochladen">
-        Laden Sie jetzt die Stellenbeschreibung hoch
-      </p>
-      <label className="Upload-Box">
-        <input type="file" accept=".pdf, image/*" onChange={handleJobChange} />
-        <span>{jobFile ? jobFile.name : "Datei auswählen"}</span>
-      </label>
-
-      <button className="Generieren-Button" onClick={handleSubmit}>Jetzt verbessern!</button>
-
-      {/* Antwort anzeigen */}
-      {optimizedText && (
-        <div className="Optimized-Output">
-          <h2>Optimierter Lebenslauf</h2>
-          <pre>{optimizedText}</pre>
+    <div className="PageWrapper">
+      <div className="Navbar">
+        <div className="Navbar-Left">
+          <div className="Logo">🧠 AI-Review</div>
+          <a href="/login">Use Cases</a>
+          <a href="/login">Products</a>
+          <a href="/login">Pricing</a>
         </div>
-      )}
+        <div className="Navbar-Right">
+          <a href="/login" className="Login">Log in</a>
+          <a href="/login" className="TryFree">Try for free</a>
+        </div>
+      </div>
 
+      <div className="App">
+      <h1 className="HeroHeadline">Mache deinen Lebenslauf</h1>
+      <h1 className="HeroSubline">
+        <span className="Colorful orange">Besser</span>,&nbsp;
+        <span className="Colorful yellow">Schöner</span>&amp;
+        <span className="Colorful teal">Smarter</span> <span className="Colorful white">mit AI</span>
+      </h1>
+        <h3>
+          Die einzige Plattform die du für deinen Lebenslauf brauchst.
+        </h3>
+
+        <p>Laden Sie Ihren Lebenslauf hoch</p>
+        <label className="Upload-Box">
+          <input type="file" accept=".pdf, image/*" onChange={handleResumeChange} />
+          <span>{resumeFile ? resumeFile.name : "Datei auswählen"}</span>
+        </label>
+
+        <p>Laden Sie jetzt die Stellenbeschreibung hoch</p>
+        <label className="Upload-Box">
+          <input type="file" accept=".pdf, image/*" onChange={handleJobChange} />
+          <span>{jobFile ? jobFile.name : "Datei auswählen"}</span>
+        </label>
+
+        <button className="Generieren-Button" onClick={handleSubmit}>
+          Jetzt verbessern!
+        </button>
+
+        {optimizedText && (
+          <div className="Optimized-Output">
+            <h2>Optimierter Lebenslauf</h2>
+            <pre>{optimizedText}</pre>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

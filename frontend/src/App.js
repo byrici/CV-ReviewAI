@@ -104,12 +104,11 @@ function App() {
           <div className="Optimized-Output">
             <h2>Optimierter Lebenslauf</h2>
             <pre>{optimizedText}</pre>
+            <button className="Download-Button" onClick={handleDownloadPDF}>
+              Als PDF herunterladen
+            </button>
           </div>
         )}
-
-        <button className="Download-Button" onClick={handleDownloadPDF}>
-          Als PDF herunterladen
-        </button>
       </div>
     </div>
   );

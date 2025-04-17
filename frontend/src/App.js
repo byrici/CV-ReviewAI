@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import axios from 'axios';
+import jsPDF from 'jspdf';
 
 function App() {
   const [resumeFile, setResumeFile] = useState(null);
@@ -36,6 +37,17 @@ function App() {
       finally {
       setLoading(false);
     }
+  };
+
+  const handleDownloadPDF = () => {
+    if (!optimizedText) return;
+  
+    const doc = new jsPDF();
+    const lines = doc.splitTextToSize(optimizedText, 180); // Zeilen umbrechen
+    doc.setFont("Helvetica");
+    doc.setFontSize(12);
+    doc.text(lines, 10, 10);
+    doc.save('optimierter_lebenslauf.pdf');
   };
 
   return (
@@ -92,6 +104,9 @@ function App() {
           <div className="Optimized-Output">
             <h2>Optimierter Lebenslauf</h2>
             <pre>{optimizedText}</pre>
+            <button className="Download-Button" onClick={handleDownloadPDF}>
+              Als PDF herunterladen
+            </button>
           </div>
         )}
       </div>
